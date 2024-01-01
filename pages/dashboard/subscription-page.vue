@@ -3,6 +3,35 @@ import { useAuth } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 const { fetchUser } = useAuth()
 
+type Subs = {
+    name: string,
+    value: string
+}
+
+const selected_sub = ref('Silver')
+
+const subscriptions = reactive<Subs[]>([
+    {
+        name: '1 month - Silver package',
+        value: 'Silver',
+    },
+    {
+        name: '3 months - Gold package',
+        value: 'Gold',
+    },
+    {
+        name: '6 months - premium package',
+        value: 'Premium',
+    },
+    {
+        name: '1 year - Diamond package',
+        value: 'Diamond',
+    },
+])
+const check_val = () => {
+    console.log(selected_sub);
+
+}
 const fetchUserData = async () => {
     await fetchUser()
 }
@@ -56,13 +85,13 @@ definePageMeta({
                 <div class="content_right">
                     <div class="right_body">
                         <div class="content">
-                            <select id="countries"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <select id="countries" v-model="selected_sub">
                                 <!-- <option selected>Choose a country</option> -->
-                                <option value="1" selected>1 month - Silver package </option>
-                                <option value="3" selected>3 months - Gold package </option>
-                                <option value="6" selected>6 months - premium package </option>
-                                <option value="2" selected>1 year - Diamond package </option>
+                                <option v-for="subscription in subscriptions" :value="subscription.value"
+                                    :key="subscription.name">{{ subscription.name }}</option>
+                                <!-- <option value="Gold" selected></option>
+                                <option value="Premium" selected> </option>
+                                <option value="Diamond" selected> </option> -->
                             </select>
 
                             <!-- <p class="head">Experience it all with TScore Premium</p> -->
@@ -71,8 +100,8 @@ definePageMeta({
                                 <span class="price">₦1,500</span>
                                 <span class="duration">per month</span>
                             </p>
-                            <a href="#" class="btn">Get
-                                Started</a>
+                            <button class="btn" @click="check_val">Get
+                                Started</button>
                             <p class="sub">Cancel anytime. No hidden fees.
                             </p>
                         </div>
