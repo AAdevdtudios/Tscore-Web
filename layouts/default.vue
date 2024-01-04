@@ -68,7 +68,7 @@
                             <div class="row">
                                 <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
                                     <a href="#" class="logo-footer">
-                                        <img src="/image/logo.png" height="24" alt="">
+                                        <img src="/Image/logo.png" height="24" alt="">
                                     </a>
                                     <p class="mt-4">Start working with Landrick that can provide everything you need to
                                         generate awareness, drive traffic, c*9onnect.</p>
