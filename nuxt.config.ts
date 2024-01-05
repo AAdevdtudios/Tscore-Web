@@ -1,12 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: {
-    enabled: true,
+    enabled: false,
 
     timeline: {
       enabled: true,
     },
   },
+  ssr: true,
   runtimeConfig: {
     public: {
       api: process.env.APIURL,
