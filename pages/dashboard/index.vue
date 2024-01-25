@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const config = useRuntimeConfig()
 definePageMeta({
     layout: "dashboard",
     middleware: 'auth'
@@ -20,15 +21,13 @@ doSomething()
 </script>
 
 <template>
-    <div class="block sm:flex flex-row-reverse mt-20 px-20">
+    <div class="block sm:flex flex-row-reverse mt-20 px-10 md:px-20">
         <div class="w-full min-h-full sm:min-h-fit">
-            <iframe src="https://www.scorebat.com/account/" frameborder="0" allowfullscreen allow='autoplay; fullscreen'
+            <iframe :src="config.public.GAMES" frameborder="0" allowfullscreen allow='autoplay; fullscreen'
                 class="_scorebatEmbeddedPlayer_ w-full h-full"></iframe>
         </div>
         <div class="w-full min-h-full">
-            <iframe
-                src="https://www.scorebat.com/embed/?token=MTMyNDUyXzE3MDU1MDc4NDdfZDBjZWM5YzIzYWMyNjkxZDdmNDRjZjAyZDk2NDJlMTI4ODk0NDRmMA=="
-                frameborder="0" allowfullscreen allow='autoplay; fullscreen'
+            <iframe :src="config.public.LIVESCORE" frameborder="0" allowfullscreen allow='autoplay; fullscreen'
                 class="_scorebatEmbeddedPlayer_ w-full h-full"></iframe>
         </div>
     </div>

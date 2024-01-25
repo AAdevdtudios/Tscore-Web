@@ -11,6 +11,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       api: process.env.APIURL,
+      LIVESCORE: process.env.LIVESCORE,
+      GAMES: process.env.GAMES,
     },
   },
   css: ["~/assets/css/main.css"],
