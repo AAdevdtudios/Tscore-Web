@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAuth } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
+import { useApiFetch } from '~/composable/useApiFetch';
 const { fetchUser } = useAuth()
 
 type Subs = {
@@ -8,28 +9,48 @@ type Subs = {
     value: string
 }
 
-const selected_sub = ref('Silver')
+const selected_sub = ref('silver')
+const loading = ref(false)
 
 const subscriptions = reactive<Subs[]>([
     {
         name: '1 month - Silver package',
-        value: 'Silver',
+        value: 'silver',
     },
     {
         name: '3 months - Gold package',
-        value: 'Gold',
+        value: 'gold',
     },
     {
         name: '6 months - premium package',
-        value: 'Premium',
+        value: 'premium',
     },
     {
         name: '1 year - Diamond package',
-        value: 'Diamond',
+        value: 'diamond',
     },
 ])
-const check_val = () => {
+const check_val = async () => {
+    loading.value = true
     console.log(selected_sub);
+    const val = {
+        "planName": selected_sub.value
+    }
+    type Response = {
+        message: string
+    }
+    const { data, error } = await useApiFetch<Response>('subscribe/', {
+        method: 'POST',
+        body: val,
+    })
+
+    console.log();
+    if (data.value == null) return
+
+    await navigateTo(data.value.message, {
+        external: true
+    })
+
 
 }
 const fetchUserData = async () => {

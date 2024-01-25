@@ -30,7 +30,7 @@
                     <span class="error" v-for="error in v.email.$errors" :key="error.$uid"> {{ error.$message }}
                     </span>
                 </div>
-                <div class="row mt-5">
+                <div class="row">
                     <div>
                         <label class="block mb-2 " for="password">
                             Password
@@ -50,17 +50,27 @@
                     </div>
                 </div>
                 <div class="my-6">
-                    <button>
-                        Register Account
+                    <button :disabled="loading">
+                        <span v-if="loading">
+                            <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+                            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                role="status">
+                                <span
+                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                            </div>
+                        </span>
+                        <span v-else>Register Account
+                            <!-- <Icon name="material-symbols-light:arrow-right-alt" /> -->
+                        </span>
                     </button>
                 </div>
                 <hr />
                 <div class="text-center">
-                    <nuxt-link to="/auth/reset-password" class="direct-link">
+                    <nuxt-link to="/reset-password" class="direct-link">
                         Forgot Password?
                     </nuxt-link>
                 </div>
-                <p>Already have an account? <nuxt-link to="/auth/login" class="direct-link">Login</nuxt-link>.</p>
+                <p>Already have an account? <nuxt-link to="/login" class="direct-link">Login</nuxt-link>.</p>
             </form>
         </div>
     </div>
@@ -74,6 +84,7 @@ import type { RegisterResponse } from '~/data';
 
 const router = useRouter()
 const snack_bar = useSnackbar()
+const loading = ref(false)
 
 
 definePageMeta({
@@ -114,12 +125,14 @@ const submit_form = async () => {
     if (!results) {
         return null
     }
+    loading.value = true
 
 
     const { data, error } = await useApiFetch<RegisterResponse>('auth/register/', {
         method: 'POST',
         body: form_data,
     })
+    loading.value = false
     if (data.value != null) {
         snack_bar.add({
             type: 'success',
@@ -132,7 +145,7 @@ const submit_form = async () => {
             }
         })
 
-        router.push('/auth/login')
+        router.push('/login')
         return null
     }
     snack_bar.add({

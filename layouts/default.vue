@@ -24,35 +24,28 @@
                 </div>
 
                 <!--Login button Start-->
-                <!-- <ul class="buy-button list-inline mb-0">
+                <ul class="buy-button list-inline mb-0">
                     <li class="list-inline-item mb-0">
-                        <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                        <button @click="$router.push('/login')" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight">
-                            <div class="login-btn-primary"><span class="btn btn-icon btn-pills btn-soft-primary"><i
-                                        data-feather="settings" class="fea icon-sm"></i></span></div>
-                            <div class="login-btn-light"><span class="btn btn-icon btn-pills btn-light"><i
-                                        data-feather="settings" class="fea icon-sm"></i></span></div>
-                        </a>
+                            <div class="login-btn-primary"><span class="btn btn-soft-primary">
+                                    <Icon name="material-symbols-light:login" /> Get Started
+                                </span></div>
+                            <div class="login-btn-light"><span class="btn btn-icon btn-pills btn-light">
+                                    <Icon name="material-symbols-light:login" />
+                                </span></div>
+                        </button>
                     </li>
-
-                    <li class="list-inline-item ps-1 mb-0">
-                        <a href="https://1.envato.market/landrick" target="_blank">
-                            <div class="login-btn-primary"><span class="btn btn-icon btn-pills btn-primary"><i
-                                        data-feather="shopping-cart" class="fea icon-sm"></i></span></div>
-                            <div class="login-btn-light"><span class="btn btn-icon btn-pills btn-light"><i
-                                        data-feather="shopping-cart" class="fea icon-sm"></i></span></div>
-                        </a>
-                    </li>
-                </ul> -->
+                </ul>
                 <!--Login button End-->
 
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
-                        <li><a href="index.html" class="sub-menu-item">Home</a></li>
-                        <li><a href="index.html" class="sub-menu-item">About US</a></li>
-                        <li><a href="index.html" class="sub-menu-item">Services</a></li>
-                        <li><a href="index.html" class="sub-menu-item">Contact</a></li>
+                        <li><a href="/" class="sub-menu-item">Home</a></li>
+                        <li><nuxt-link to="/#about-us" class="sub-menu-item">About US</nuxt-link></li>
+                        <li><nuxt-link to="/#services" class="sub-menu-item">Services</nuxt-link></li>
+                        <li><nuxt-link href="/contact" class="sub-menu-item">Contact</nuxt-link></li>
                     </ul><!--end navigation menu-->
                 </div><!--end navigation-->
             </div><!--end container-->
@@ -87,38 +80,29 @@
                                 <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                                     <h5 class="footer-head">Company</h5>
                                     <ul class="list-unstyled footer-list mt-4">
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> About us</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Services</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Team</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Pricing</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Project</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Careers</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Blog</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Login</a></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> About us</nuxt-link></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Services</nuxt-link></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Team</nuxt-link></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Pricing</nuxt-link></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Blog</nuxt-link></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Login</nuxt-link></li>
                                     </ul>
                                 </div><!--end col-->
 
                                 <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                                     <h5 class="footer-head">Usefull Links</h5>
                                     <ul class="list-unstyled footer-list mt-4">
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Documentation</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Changelog</a></li>
-                                        <li><a href="javascript:void(0)" class="text-foot"><i
-                                                    class="uil uil-angle-right-b me-1"></i> Components</a></li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Terms of Services</nuxt-link>
+                                        </li>
+                                        <li><nuxt-link to="/#about-us" class="text-foot"><i
+                                                    class="uil uil-angle-right-b me-1"></i> Privacy Policy</nuxt-link></li>
                                     </ul>
                                 </div><!--end col-->
 
@@ -126,7 +110,7 @@
                                     <h5 class="footer-head">Newsletter</h5>
                                     <p class="mt-4">Sign up and receive the latest tips via email.</p>
                                     <form>
-                                        <div class="row">
+                                        <div class="row" style="flex-wrap: wrap;">
                                             <div class="col-lg-12">
                                                 <div class="foot-subscribe mb-3">
                                                     <label class="form-label">Write your email <span
@@ -167,21 +151,20 @@
 
                         <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
                             <ul class="list-unstyled text-sm-end mb-0">
-                                <li class="list-inline-item"><a href="javascript:void(0)"><img
+                                <li class="list-inline-item"><nuxt-link to="/#about-us"><img
                                             src="/images/payments/american-ex.png" class="avatar avatar-ex-sm"
-                                            title="American Express" alt=""></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)"><img
+                                            title="American Express" alt=""></nuxt-link></li>
+                                <li class="list-inline-item"><nuxt-link to="/#about-us"><img
                                             src="/images/payments/discover.png" class="avatar avatar-ex-sm" title="Discover"
-                                            alt=""></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)"><img
+                                            alt=""></nuxt-link></li>
+                                <li class="list-inline-item"><nuxt-link to="/#about-us"><img
                                             src="/images/payments/master-card.png" class="avatar avatar-ex-sm"
-                                            title="Master Card" alt=""></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)"><img
+                                            title="Master Card" alt=""></nuxt-link></li>
+                                <li class="list-inline-item"><nuxt-link to="/#about-us"><img
                                             src="/images/payments/paypal.png" class="avatar avatar-ex-sm" title="Paypal"
-                                            alt=""></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)"><img
-                                            src="/images/payments/visa.png" class="avatar avatar-ex-sm" title="Visa"
-                                            alt=""></a></li>
+                                            alt=""></nuxt-link></li>
+                                <li class="list-inline-item"><nuxt-link to="/#about-us"><img src="/images/payments/visa.png"
+                                            class="avatar avatar-ex-sm" title="Visa" alt=""></nuxt-link></li>
                             </ul>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -189,6 +172,7 @@
             </div>
         </footer><!--end footer-->
         <!-- Footer End -->
+        <VitePwaManifest />
     </div>
 </template>
 

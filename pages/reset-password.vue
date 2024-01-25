@@ -11,6 +11,7 @@ const snack_bar = useSnackbar()
 const form_data = ref({
     email: ''
 });
+const loading = ref(false)
 
 const rules = computed(() => {
     return {
@@ -25,6 +26,7 @@ const submit_form = async () => {
     if (!results) {
         return null
     }
+    loading.value = true
 
     const { data, error } = await useApiFetch('auth/password-reset/', {
         method: 'POST',
@@ -32,12 +34,14 @@ const submit_form = async () => {
     })
 
     if (data.value) {
+        loading.value = false
         snack_bar.add({
             type: 'success',
             text: "Check your email to continue and reset password",
         })
         return null
     }
+    loading.value = false
 
     snack_bar.add({
         type: 'error',
@@ -61,14 +65,24 @@ const submit_form = async () => {
                     </span>
                 </div>
                 <div class="my-6">
-                    <button>
-                        Send Reset token
+                    <button :disabled="loading">
+                        <span v-if="loading">
+                            <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+                            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                role="status">
+                                <span
+                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                            </div>
+                        </span>
+                        <span v-else>Send Reset token
+                            <!-- <Icon name="material-symbols-light:arrow-right-alt" /> -->
+                        </span>
                     </button>
                 </div>
             </form>
             <hr />
             <div class="text-center">
-                <p>Already have an account <nuxt-link to="/auth/login" class="direct-link">Login</nuxt-link>.</p>
+                <p>Already have an account <nuxt-link to="/login" class="direct-link">Login</nuxt-link>.</p>
             </div>
         </div>
     </div>

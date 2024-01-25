@@ -1,9 +1,9 @@
 .hrz {
-    @apply h-px flex-auto bg-gray-100 dark:bg-gray-300
+    @apply h-px flex-auto bg-gray-100
 }
 
 select {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
 }
 
 .btn {
@@ -15,7 +15,7 @@ select {
 }
 
 .subscription_body {
-    @apply bg-white py-20 dark:bg-slate-800
+    @apply bg-white py-20
 }
 
 .section_body {
@@ -27,15 +27,15 @@ select {
 }
 
 .subscription_head h2 {
-    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-200
+    @apply text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl
 }
 
 .subscription_head p {
-    @apply mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300
+    @apply mt-6 text-lg leading-8 text-gray-600
 }
 
 .subscription_content {
-    @apply mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 dark:ring-gray-600 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none
+    @apply mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none
 }
 
 .subscription_content .content_left {
@@ -43,11 +43,11 @@ select {
 }
 
 .content_left h3 {
-    @apply text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300
+    @apply text-2xl font-bold tracking-tight text-gray-900
 }
 
 .content_left p {
-    @apply mt-6 text-base leading-7 text-gray-600 dark:text-gray-300
+    @apply mt-6 text-base leading-7 text-gray-600
 }
 
 .content_left .heading {
@@ -59,7 +59,7 @@ select {
 }
 
 .content_left .list {
-    @apply mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 dark:text-gray-300 sm:grid-cols-2 sm:gap-6
+    @apply mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6
 }
 
 .content_left .icon {
@@ -71,7 +71,7 @@ select {
 }
 
 .content_right .right_body {
-    @apply rounded-2xl bg-gray-50 dark:bg-gray-200 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16
+    @apply rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16
 }
 
 .right_body .content {

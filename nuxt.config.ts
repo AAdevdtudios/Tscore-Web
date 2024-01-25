@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: {
-    enabled: false,
+    enabled: true,
 
     timeline: {
       enabled: true,
@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-snackbar",
     "nuxt-icon",
+    "@vite-pwa/nuxt",
   ],
   postcss: {
     plugins: {

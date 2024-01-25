@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.10.1",
+    "@vite-pwa/nuxt": "^0.4.0",
     "@vueuse/nuxt": "^10.7.0",
     "autoprefixer": "^10.4.16",
     "nuxt": "^3.8.2",
