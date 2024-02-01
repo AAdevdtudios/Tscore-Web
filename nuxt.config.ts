@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  devServer: {
+    host: "0.0.0.0",
+  },
   ssr: true,
   runtimeConfig: {
     public: {
