@@ -6,30 +6,37 @@ const { fetchUser } = useAuth()
 
 type Subs = {
     name: string,
-    value: string
+    value: string,
+    price: string
 }
 
-const selected_sub = ref('silver')
-const loading = ref(false)
 
 const subscriptions = reactive<Subs[]>([
     {
         name: '1 month - Silver package',
         value: 'silver',
+        price: "10,000"
     },
     {
         name: '3 months - Gold package',
         value: 'gold',
+        price: "8,900"
     },
     {
         name: '6 months - premium package',
         value: 'premium',
+        price: "7,800"
     },
     {
         name: '1 year - Diamond package',
         value: 'diamond',
+        price: "6,700"
     },
 ])
+
+const selected_sub = ref<Subs>(subscriptions[0])
+const loading = ref(false)
+
 const check_val = async () => {
     loading.value = true
     console.log(selected_sub);
@@ -108,7 +115,7 @@ definePageMeta({
                         <div class="content">
                             <select id="countries" v-model="selected_sub">
                                 <!-- <option selected>Choose a country</option> -->
-                                <option v-for="subscription in subscriptions" :value="subscription.value"
+                                <option v-for="subscription in subscriptions" :value="subscription"
                                     :key="subscription.name">{{ subscription.name }}</option>
                                 <!-- <option value="Gold" selected></option>
                                 <option value="Premium" selected> </option>
@@ -118,7 +125,7 @@ definePageMeta({
                             <!-- <p class="head">Experience it all with TScore Premium</p> -->
 
                             <p class="price_content">
-                                <span class="price">₦1,500</span>
+                                <span class="price">₦{{ selected_sub.price }}</span>
                                 <span class="duration">per month</span>
                             </p>
                             <button class="btn" @click="check_val">Get
