@@ -22,11 +22,11 @@ const subscriptions = reactive<Subs[]>([
         value: 'gold',
         price: "8,900"
     },
-    {
-        name: '6 months - premium package',
-        value: 'premium',
-        price: "7,800"
-    },
+    // {
+    //     name: '6 months - premium package',
+    //     value: 'premium',
+    //     price: "7,800"
+    // },
     {
         name: '1 year - Diamond package',
         value: 'diamond',
@@ -41,7 +41,7 @@ const check_val = async () => {
     loading.value = true
     console.log(selected_sub);
     const val = {
-        "planName": selected_sub.value
+        "planName": selected_sub.value.value
     }
     type Response = {
         message: string
