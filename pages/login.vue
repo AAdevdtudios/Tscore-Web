@@ -57,7 +57,7 @@ import { storeToRefs } from 'pinia'
 const route = useRouter()
 const snack_bar = useSnackbar()
 
-const { authenticateUser } = useAuth()
+const { authenticateUser, fetchUser } = useAuth()
 const { authenticated, error_message, loading, is_subscribed } = storeToRefs(useAuth())
 
 
@@ -86,39 +86,19 @@ const on_submit = async function () {
     }
 
     await authenticateUser(form_data)
-    if (authenticated.value == false) {
+    if (!authenticated.value) {
         snack_bar.add({
             type: 'error',
             text: error_message.value,
         })
         return null
     }
-    if (is_subscribed.value && authenticated.value) {
-        route.push({ path: '/dashboard' })
+    await fetchUser()
+    if (!is_subscribed.value) {
+        route.push({ path: '/dashboard/subscription-page' })
         return null
     }
-    route.push({ path: '/dashboard/subscription-page' })
-    return null
-
-
-
-
-    // if (!authenticated.value) {
-    //     snack_bar.add({
-    //         type: 'error',
-    //         text: error_message.value,
-    //     })
-    //     return null
-    // }
-    // console.log(user);
-
-
-    // if (user.value?.is_subscribed) {
-    //     route.push({ path: '/dashboard/subscription-page' })
-    //     return null
-    // }
-
-    // route.push({ path: '/dashboard' })
+    route.push({ path: '/dashboard' })
     return null
 }
 

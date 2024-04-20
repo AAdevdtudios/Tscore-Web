@@ -30,11 +30,11 @@ export type User = {
 export const useAuth = defineStore("auth", () => {
   const token = useCookie("token");
   const user = ref<User>();
-  const loading = ref<boolean>();
+  const loading = ref<boolean>(false);
   const error_message = ref<string>();
   const error_status = ref<boolean>();
-  const authenticated = ref<boolean>();
-  const is_subscribed = ref<boolean>();
+  const authenticated = ref<boolean>(false);
+  const is_subscribed = ref<boolean>(false);
   const is_loggedIn = computed(() => !!user.value);
 
   async function authenticateUser({ email, password }: UserPayload) {
@@ -48,16 +48,16 @@ export const useAuth = defineStore("auth", () => {
         password,
       },
     });
-    console.log(error);
+    loading.value = false;
 
     if (error.value !== null) {
       loading.value = false;
       error_message.value = error.value.data.detail;
-      authenticated.value = false;
       return null;
     }
+    authenticated.value = true;
     await SaveCookies(data.value?.access_token, "token");
-    await fetchUser();
+    
     return null;
 
     // if (error.value) {
@@ -91,7 +91,6 @@ export const useAuth = defineStore("auth", () => {
     // const token = useCookie("token");
     if (error.value !== null) {
       token.value = null;
-      authenticated.value = false;
       loading.value = false;
       error_status.value = true;
       return null;
@@ -99,7 +98,7 @@ export const useAuth = defineStore("auth", () => {
 
     authenticated.value = true;
     user.value = data.value!;
-    is_subscribed.value = user.value?.is_subscribed;
+    is_subscribed.value = user.value.is_subscribed;
 
     loading.value = false;
     return null;
@@ -131,16 +130,16 @@ export const useAuth = defineStore("auth", () => {
   }
 
   return {
+    VerifyUser,
+    SaveCookies,
+    authenticateUser,
+    fetchUser,
     user,
     loading,
     authenticated,
-    authenticateUser,
     error_message,
     error_status,
-    fetchUser,
     is_loggedIn,
     is_subscribed,
-    VerifyUser,
-    SaveCookies,
   };
 });

@@ -3,6 +3,7 @@ import { useAuth } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 import { useApiFetch } from '~/composable/useApiFetch';
 const { fetchUser } = useAuth()
+const snack_bar = useSnackbar()
 
 type Subs = {
     name: string,
@@ -46,17 +47,26 @@ const check_val = async () => {
     type Response = {
         message: string
     }
-    const { data, error } = await useApiFetch<Response>('subscribe/', {
-        method: 'POST',
-        body: val,
-    })
+    try {
+        const { data, error } = await useApiFetch<Response>('subscribe/', {
+            method: 'POST',
+            body: val,
+        })
+        loading.value = true
 
-    console.log();
-    if (data.value == null) return
+        console.log();
+        if (data.value == null) return
 
-    await navigateTo(data.value.message, {
-        external: true
-    })
+        await navigateTo(data.value.message, {
+            external: true
+        })
+    } catch (error) {
+        console.log(error);
+        snack_bar.add({
+            type: 'error',
+            text: error,
+        })
+    }
 
 
 }
@@ -128,8 +138,17 @@ definePageMeta({
                                 <span class="price">₦{{ selected_sub.price }}</span>
                                 <span class="duration">per month</span>
                             </p>
-                            <button class="btn" @click="check_val">Get
-                                Started</button>
+                            <button :disabled="loading" class="btn" @click="check_val">
+                                <span v-if="loading">
+                                    <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+                                    <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                        role="status">
+                                        <span
+                                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>
+                                </span>
+                                <span v-else>Get Started</span>
+                            </button>
                             <p class="sub">Cancel anytime. No hidden fees.
                             </p>
                         </div>
